@@ -5,7 +5,7 @@ var request = require("request-promise");
 const encodedValue = encodeURIComponent("da81ce5f4da27e5924f23ce7ef86df57");
 var options = {
 	method: "GET",
-	uri: `https://api.themoviedb.org/3/search/keyword?api_key=${encodedValue}&query=Bi&page=1`
+	uri: `https://api.themoviedb.org/3/search/keyword?api_key=${encodedValue}&query=Red&page=1`
 };
 
 // @route   GET api/films/test

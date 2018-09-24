@@ -1,41 +1,41 @@
 import React, { Component } from "react";
-import axios from "axios";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { getFilms } from "../../actions/filmsActions";
 
 class Films extends Component {
-	constructor() {
-		super();
+	// constructor() {
+	// 	super();
 
-		this.state = { title: "Films list", films: null };
-	}
+	// 	this.state = { title: "Films list" };
+	// }
 
 	componentDidMount() {
-		axios
-			.get("/api/films")
-			.then(res => {
-				console.log(res.data.results);
-				this.setState({ films: res.data.results });
-			})
-			.catch(err => console.log(err.data));
+		this.props.getFilms();
 	}
 
 	render() {
-		let postContent;
-		if (!this.state.films) {
-			postContent = "epty";
-		} else {
-			postContent = this.state.films.map(item => (
+		// @TODO: Why here films put into propery films?
+		const { films } = this.props.films;
+		console.log(this.props);
+		let filmsList;
+		console.warn(films);
+		if (films) {
+			filmsList = films.map(item => (
 				<li className="film" key={item.id}>
 					{item.name}
 				</li>
 			));
+		} else {
+			filmsList = "epty";
 		}
 
 		return (
 			<div className="feed">
 				<div className="container">
 					<div className="row">
-						<h1>{this.state.title}</h1>
-						<ul>{postContent}</ul>
+						{/* <h1>{this.state.title}</h1> */}
+						<ul>{filmsList}</ul>
 					</div>
 				</div>
 			</div>
@@ -43,4 +43,15 @@ class Films extends Component {
 	}
 }
 
-export default Films;
+Films.propTypes = {
+	getFilms: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+	films: state.films
+});
+
+export default connect(
+	mapStateToProps,
+	{ getFilms }
+)(Films);
