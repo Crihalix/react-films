@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-var request = require("request-promise");
+const request = require("request-promise");
+const { apiKey } = require("../../config/keys");
 
-const encodedValue = encodeURIComponent("da81ce5f4da27e5924f23ce7ef86df57");
-var options = {
+const options = {
 	method: "GET",
-	uri: `https://api.themoviedb.org/3/search/keyword?api_key=${encodedValue}&query=Red&page=1`
+	uri: `https://api.themoviedb.org/3/search/keyword?api_key=${apiKey}&query=Red&page=1`
 };
 
 // @route   GET api/films/test
@@ -20,7 +20,6 @@ router.get("/", (req, res) => {
 	request(options)
 		.then(function(response) {
 			// Success
-			console.log(response);
 			return res.send(response);
 		})
 		.catch(function(err) {

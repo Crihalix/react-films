@@ -4,12 +4,6 @@ import PropTypes from "prop-types";
 import { getFilms } from "../../actions/filmsActions";
 
 class Films extends Component {
-	// constructor() {
-	// 	super();
-
-	// 	this.state = { title: "Films list" };
-	// }
-
 	componentDidMount() {
 		this.props.getFilms();
 	}

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
 
@@ -14,7 +14,9 @@ class App extends Component {
 					<header className="App-header">
 						<h1 className="App-title">Welcome to Films library</h1>
 					</header>
-					<Films />
+					<Router>
+						<Route path="/films" component={Films} />
+					</Router>
 				</div>
 			</Provider>
 		);

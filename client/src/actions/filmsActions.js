@@ -5,6 +5,11 @@ import { GET_FILMS } from "./types";
 export const getFilms = () => dispatch => {
 	axios
 		.get("/api/films")
+		.then(1)
+		.then(res => {
+			res.data.results.movie = "xxx";
+			return res;
+		})
 		.then(res => {
 			console.log(res.data.results);
 			dispatch({
