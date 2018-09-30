@@ -1,7 +1,8 @@
-import { GET_FILMS } from "../actions/types";
+import { GET_FILMS, GET_FILM } from "../actions/types";
 
 const initialState = {
-	films: null
+	films: null,
+	film: null
 };
 
 export default function(state = initialState, action) {
@@ -10,6 +11,12 @@ export default function(state = initialState, action) {
 			return {
 				...state,
 				films: action.payload
+			};
+		case GET_FILM:
+			console.log(state, action.payload);
+			return {
+				...state,
+				film: action.payload
 			};
 		default:
 			return state;

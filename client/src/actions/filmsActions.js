@@ -1,15 +1,10 @@
 import axios from "axios";
 
-import { GET_FILMS } from "./types";
+import { GET_FILMS, GET_FILM } from "./types";
 
 export const getFilms = () => dispatch => {
 	axios
 		.get("/api/films")
-		.then(1)
-		.then(res => {
-			res.data.results.movie = "xxx";
-			return res;
-		})
 		.then(res => {
 			console.log(res.data.results);
 			dispatch({
@@ -21,6 +16,25 @@ export const getFilms = () => dispatch => {
 			console.log(err.data);
 			dispatch({
 				type: GET_FILMS,
+				payload: {}
+			});
+		});
+};
+
+export const getFilm = id => dispatch => {
+	axios
+		.get(`/api/films/${id}`)
+		.then(res => {
+			console.log(res.data);
+			dispatch({
+				type: GET_FILM,
+				payload: res.data
+			});
+		})
+		.catch(err => {
+			console.log(err.data);
+			dispatch({
+				type: GET_FILM,
 				payload: {}
 			});
 		});
