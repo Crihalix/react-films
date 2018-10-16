@@ -13,17 +13,23 @@ class FilmDetailed extends Component {
 	render() {
 		const { film } = this.props.film;
 		let filmContent;
-		console.log(this.props);
+		console.log(film);
 		if (film) {
 			filmContent = (
 				<div className="container">
-					<h1>{film.title}</h1>
-					<div className="release small">{film.release_date}</div>
-					<img
-						className="img-fluid"
-						src={`https://image.tmdb.org/t/p/original/${film.poster_path}`}
-						alt={film.title}
-					/>
+					<div className="row">
+						<div className="col-md-6">
+							<img
+								className="img-fluid"
+								src={`https://image.tmdb.org/t/p/original${film.poster_path}`}
+								alt={film.title}
+							/>
+						</div>
+						<div className="col-md-6 text-left">
+							<h1>{film.title}</h1>
+							<div className="release small">{film.release_date}</div>
+						</div>
+					</div>
 				</div>
 			);
 		} else {

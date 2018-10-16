@@ -17,15 +17,20 @@ class Films extends Component {
 		console.warn(films);
 		if (films) {
 			filmsList = films.map(item => (
-				<li className="col-md-3 film" key={item.id}>
-					<Link to={`films/${item.id}`}>
-						<img
-							className="img-fluid"
-							src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
-							alt={item.title}
-						/>
-					</Link>
-					<h3>{item.title}</h3>
+				<li className="col-md-3 film mb-3" key={item.id}>
+					<div className="card">
+						<Link to={`films/${item.id}`}>
+							<img
+								className="card-img-top"
+								src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
+								alt={item.title}
+							/>
+						</Link>
+						<h3 className="card-title">
+							<Link to={`films/${item.id}`}>{item.title}</Link>
+						</h3>
+						<p className="card-text text-truncate">{item.overview}</p>
+					</div>
 				</li>
 			));
 		} else {
