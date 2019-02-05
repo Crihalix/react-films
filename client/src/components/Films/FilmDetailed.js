@@ -28,6 +28,7 @@ class FilmDetailed extends Component {
 						<div className="col-md-6 text-left">
 							<h1>{film.title}</h1>
 							<div className="release small">{film.release_date}</div>
+							<p className="card-text">{film.overview}</p>
 						</div>
 					</div>
 				</div>
